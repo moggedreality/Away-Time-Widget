@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Catppuccin Mocha: used by the static widget preview and the window before the app theme loads -->
+<resources>
+    <color name="base">#1E1E2E</color>
+    <color name="surface0">#313244</color>
+    <color name="text">#CDD6F4</color>
+    <color name="subtext">#A6ADC8</color>
+    <color name="mauve">#CBA6F7</color>
+    <color name="launcher_bg">#2B0E18</color>
+</resources>

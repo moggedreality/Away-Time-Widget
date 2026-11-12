@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- System bar colors are set in code: the app draws edge-to-edge, which Android 15+ always enforces. -->
+    <style name="Theme.AwayTime" parent="android:Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@color/base</item>
+        <item name="android:textColorPrimary">@color/text</item>
+        <item name="android:colorAccent">@color/mauve</item>
+    </style>
+</resources>
