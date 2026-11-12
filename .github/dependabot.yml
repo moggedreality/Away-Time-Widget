@@ -1,0 +1,76 @@
+# Dependabot Configuration for Away Time
+# Automatically creates PRs for dependency updates
+# Review and merge to keep dependencies current
+
+version: 2
+updates:
+  # Gradle dependencies (version catalog)
+  - package-ecosystem: "gradle"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "UTC"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "gradle"
+    commit-message:
+      prefix: "chore(deps)"
+      include: "scope"
+    groups:
+      android-gradle-plugin:
+        patterns:
+          - "com.android*"
+      kotlin:
+        patterns:
+          - "org.jetbrains.kotlin*"
+      androidx:
+        patterns:
+          - "androidx.*"
+      testing:
+        patterns:
+          - "junit*"
+          - "org.junit*"
+          - "androidx.test*"
+          - "androidx.test.espresso*"
+          - "com.google.truth*"
+          - "org.robolectric*"
+      code-quality:
+        patterns:
+          - "org.jlleitschuh.gradle.ktlint*"
+          - "io.gitlab.arturbosch.detekt*"
+          - "com.diffplug.spotless*"
+
+  # GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "UTC"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "github-actions"
+    commit-message:
+      prefix: "chore(ci)"
+      include: "scope"
+
+  # Gradle wrapper
+  - package-ecosystem: "gradle"
+    directory: "/gradle/wrapper"
+    schedule:
+      interval: "monthly"
+      day: "1st"
+      time: "09:00"
+      timezone: "UTC"
+    open-pull-requests-limit: 2
+    labels:
+      - "dependencies"
+      - "gradle-wrapper"
+    commit-message:
+      prefix: "chore(deps)"
+      include: "scope"

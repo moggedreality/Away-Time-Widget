@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  OWASP Dependency Check Suppression File
+  Use this to suppress false positives
+  See: https://owasp.org/www-project-dependency-check/
+-->
+<suppressions>
+  <!--
+  Example suppression:
+  <suppress>
+    <notes>Reason for suppression</notes>
+    <packageUrl>pkg:maven/com.example/library@1.0.0</packageUrl>
+    <cve>CVE-2023-12345</cve>
+  </suppress>
+  -->
+
+  <!-- Add suppressions here as needed -->
+</suppressions>

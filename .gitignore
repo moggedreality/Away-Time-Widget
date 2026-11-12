@@ -1,0 +1,43 @@
+# Gradle
+.gradle/
+build/
+/app/build/
+
+# Local configuration
+local.properties
+*.iml
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Gradle wrapper (optional - some commit it, some don't)
+# gradle/wrapper/gradle-wrapper.jar
+
+# Release keystore (never commit!)
+*.jks
+*.keystore
+*.store
+key.properties
+
+# Build outputs
+*.apk
+*.aab
+*.ap_
+
+# Test reports
+*.html
+!**/README.html
+
+# Coverage reports
+*.ec
+*.exec
+
+# Logs
+*.log

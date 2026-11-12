@@ -1,0 +1,134 @@
+# Detekt Configuration for Away Time
+# Based on default config with adjustments for Android widget app
+# Run with: ./gradlew detekt
+# Generate baseline: ./gradlew detektBaseline
+
+build:
+  maxIssues: 0
+  weights:
+    complexity: 2
+    style: 1
+    comments: 1
+    errors: 10
+
+# Exclude generated code and test resources
+exclude:
+  - "**/build/**"
+  - "**/generated/**"
+  - "**/BR.kt"
+  - "**/R.kt"
+  - "**/*Test*.kt"
+  - "**/*Spec*.kt"
+
+# Custom rule sets
+rules:
+  # Complexity rules
+  ComplexMethod:
+    threshold: 15
+    ignoreSingleLineMethods: true
+    ignoreOverrideMethods: true
+
+  LongMethod:
+    threshold: 60
+    ignoreOverrideMethods: true
+
+  LongParameterList:
+    threshold: 6
+    ignoreDefaultParameters: true
+    ignoreDataClasses: true
+    ignoreOverloaded: true
+
+  NestedBlockDepth:
+    threshold: 4
+
+  TooManyFunctions:
+    thresholdInFiles: 30
+    thresholdInClasses: 20
+    thresholdInInterfaces: 15
+    thresholdInObjects: 15
+    thresholdInEnums: 15
+    ignoreDeprecated: false
+    ignorePrivate: false
+    ignoreOverridden: true
+
+  # Style rules
+  MagicNumber:
+    ignoreNumbers: "-1, 0, 1, 2, 3, 4, 5, 10, 100, 1000"
+    ignorePropertyDeclaration: true
+    ignoreLocalVariableDeclaration: true
+    ignoreConstantDeclaration: true
+    ignoreCompanionObjectPropertyDeclaration: true
+    ignoreAnnotation: true
+    ignoreNamedArgument: true
+    ignoreFunctionCall: true
+    ignoreEnums: true
+
+  WildcardImport:
+    excludes: ["androidx.*", "kotlin.*", "java.*"]
+
+  MaxLineLength:
+    maxLineLength: 120
+    excludePackageStatements: true
+    excludeImportStatements: true
+    excludeCommentStatements: true
+
+  FunctionOnlyReturningConstant:
+    ignoreOverridable: true
+    excludedFunctions: ["describeContents"]
+
+  # Naming rules
+  FunctionNaming:
+    ignoredPattern: "^(_.*|set\(.+\)|get\(.+\))$"
+
+  ClassNaming:
+    ignoreAnnotation: true
+
+  # Comments rules
+  CommentOverPrivateFunction:
+    enabled: false
+  CommentOverPrivateProperty:
+    enabled: false
+
+  # Error prone rules
+  ReturnCount:
+    max: 6
+    excludedFunctions: ["describeContents"]
+
+  # Formatting rules
+  Indentation:
+    indentSize: 4
+    continuationIndentSize: 4
+
+  # Android specific
+  UnusedResources:
+    enabled: true
+
+  # Custom rules for this project
+  # Disable rules that conflict with our coding style
+  UnnecessaryAbstractClass:
+    enabled: false
+
+  # Allow explicit types for clarity in widget rendering code
+  ExplicitTypeArguments:
+    enabled: false
+
+# Formatting (handled by ktlint/spotless)
+formatting:
+  enabled: false
+
+# Warnings as errors for CI
+console-reports:
+  active: true
+  exclude:
+    - "Copyright"
+    - "Build"
+    - "MaxLineLength"
+    - "WildcardImport"
+
+output-reports:
+  active: true
+  exclude:
+    - "Copyright"
+    - "Build"
+    - "MaxLineLength"
+    - "WildcardImport"
