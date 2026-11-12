@@ -8,7 +8,7 @@ pluginManagement {
     // Enable version catalogs
     resolutionStrategy {
         eachPlugin {
-            if (requested.id.id == "com.android.application" || requested.id.id == "org.jetbrains.kotlin.android") {
+            if (requested.id.id == "com.android.application") {
                 useVersion(providers.gradleProperty("agp.version").getOrNull() ?: "8.13.2")
             }
         }
@@ -21,20 +21,10 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
     }
-
-    // Enable version catalog for all projects
-    versionCatalogs {
-        create("libs") {
-            from(files("gradle/libs.versions.toml"))
-        }
-    }
+    // Version catalog auto-loaded from gradle/libs.versions.toml (Gradle 8.14+)
 }
 
 rootProject.name = "AwayTime"
 
 include(":app")
 
-// Enable configuration cache (Gradle 8.14+)
-configure<org.gradle.api.initialization.Settings> {
-    isConfigurationCache = true
-}

@@ -2,6 +2,8 @@
 // Versions are centralized in gradle/libs.versions.toml
 // Update versions there, then run: ./gradlew dependencyUpdates
 
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.kotlin.android) apply false
@@ -22,10 +24,10 @@ allprojects {
 }
 
 tasks {
-    // Configure JVM target for all Kotlin compile tasks
+    // Configure JVM target for all Kotlin compile tasks (Kotlin 2.0+ compilerOptions DSL)
     withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
-        kotlinOptions {
-            jvmTarget = libs.versions.jvmTarget.get()
+        compilerOptions {
+            jvmTarget.set(JvmTarget.valueOf(libs.versions.jvmTarget.get()))
         }
     }
 }

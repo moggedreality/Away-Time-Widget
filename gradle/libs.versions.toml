@@ -9,10 +9,10 @@ kotlin = "2.3.20"
 gradle = "8.14.3"
 
 # Android
-compileSdk = 36
-minSdk = 28
-targetSdk = 36
-jvmTarget = "17"
+compileSdk = "36"
+minSdk = "28"
+targetSdk = "36"
+jvmTarget = "JVM_17"
 
 # Libraries (add as needed)
 # androidx-core = "1.15.0"
@@ -33,7 +33,7 @@ truth = "1.1.7"
 robolectric = "4.11"
 
 # Code quality
-ktlint = "1.5.0"
+ktlint = "12.3.0"
 detekt = "1.23.6"
 spotless = "6.25.0"
 
